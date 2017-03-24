@@ -2,8 +2,11 @@
 
 class About extends Controller {
     function __construct() {
-        parent::__construct();
-        echo 'we are in about<br />';
+        parent::__construct();        
+    }
+
+    function Index(){
+        $this->view->render('about/index');
     }
 
     public function Us($arg = false){
