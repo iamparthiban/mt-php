@@ -6,9 +6,18 @@ class Bootstrap {
         $url = rtrim($url,'/'); 
         $url = explode('/',$url);
 
-        print_r($url);
+        //print_r($url);
 
-        require 'controllers/' .$url[0]. '.php';
+        $file = 'controllers/' .$url[0]. '.php';
+
+        if(file_exists($file)){
+            require $file;
+        }
+        else {
+            require 'controllers/error.php';
+            $controller = new ErrorController();
+            return false;
+        }         
         $controller = new $url[0];
 
         if(isset($url[2])) {
